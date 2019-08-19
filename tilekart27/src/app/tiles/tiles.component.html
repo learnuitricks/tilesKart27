@@ -1,0 +1,39 @@
+<div>
+  <span>
+      <select [(ngModel)]="selectedFilter" id="selectBox" name="filterBox">
+          <option *ngFor="let filter of filterOptions" value="{{filter}}"
+      >{{filter}}</option>
+        </select>
+  </span>
+  <span>
+      <input type="text" [(ngModel)]="filterText" name="filterText" id="fiterText" />
+  </span>
+
+  <span>
+      <button class="btn btn-primary" (click)="filter()">Go</button>
+  </span>
+ 
+
+</div>
+<table *ngIf="tiles && tiles.length >0" class="table">
+    <thead>
+      <th>image</th>
+      <th>name</th>
+      <th>model</th>
+      <th>price</th>
+      <th>status</th>
+      <th>rating</th>
+    </thead>
+    <tr *ngFor="let tile of filteredTiles" app-tile [tile]='tile'>
+
+     <div ></div>
+    </tr>
+   </table>
+
+   <div *ngIf="tiles && tiles.length == 0">
+     there are no tiles available
+
+   </div>
+   
+   
+   
