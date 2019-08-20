@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,15 +11,15 @@ export class RegisterComponent implements OnInit {
 
   registerForm:FormGroup;
   // userName:FormControl;
-  constructor() { 
-    this.registerForm = new FormGroup({
-      userName: new FormControl('UI Tricks'),
-      email: new FormControl('contact@uitricks.com'),
-      phone: new FormControl('8088292978'),
-      billingAdress: new FormGroup({
-        doorNumber: new FormControl(),
-        city : new FormControl(),
-        zip : new FormControl()
+  constructor(private formBuilder: FormBuilder) { 
+    this.registerForm = this.formBuilder.group({
+      userName: ['UI Tricks'],
+      email: ['contact@uitricks.com'],
+      phone: ['8088292978'],
+      billingAdress: this.formBuilder.group({
+        doorNumber: [],
+        city : [],
+        zip : []
       })
     })
     
