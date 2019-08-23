@@ -13,6 +13,7 @@ import { StarComponent } from './shared/star/star.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { TileDetailComponent } from './tiles/tile-detail/tile-detail.component';
 import { RegisterComponent } from './users/register/register.component';
+import { MaxValueDirective } from './shared/custom_directives/max-value.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegisterComponent } from './users/register/register.component';
     StarComponent,
     WelcomeComponent,
     TileDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    MaxValueDirective
   ],
   imports: [
     BrowserModule,
