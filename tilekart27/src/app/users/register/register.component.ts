@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -9,17 +10,19 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class RegisterComponent implements OnInit {
 
+  zipCode:string = '^[1-9][0-9]{5}$';
   registerForm:FormGroup;
+  saveMessage:string='';
   // userName:FormControl;
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder, private userService:UserService) { 
     this.registerForm = this.formBuilder.group({
-      userName: ['UI Tricks'],
+      userName: ['',Validators.required],
       email: ['contact@uitricks.com'],
       phone: ['8088292978'],
       billingAdress: this.formBuilder.group({
         doorNumber: [],
         city : [],
-        zip : []
+        zip : ['',[Validators.required,Validators.pattern(this.zipCode)]]
       })
     })
     
@@ -29,7 +32,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    console.log(this.registerForm.value);
+    //console.log(this.registerForm.value);
+    this.userService.createUser(this.registerForm.value).subscribe((message)=>{
+      console.log(message);
+      this.saveMessage = message;
+    })
   }
 
 }

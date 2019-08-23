@@ -2,7 +2,11 @@
     <form  [formGroup]='registerForm'>
     <div class="form-group" >
       <label for="userName">User Name</label>
-      <input type="text" class="form-control"  formControlName="userName"    >
+      <input type="text" class="form-control"  formControlName="userName"   required >
+    </div>
+
+    <div class="alert alert-danger" *ngIf="registerForm.get('userName').status=='INVALID'">
+      user name is required field
     </div>
     <div class="form-group" >
       <label for="email">Email</label>
@@ -28,6 +32,18 @@
           Pin Code:
           <input type="text" formControlName="zip">
         </label>
+
+        <div>
+          control status : {{registerForm.get('billingAdress').get('zip').status}}
+        </div>
+
+        <div class="alert alert-danger" *ngIf="registerForm.get('billingAdress').get('zip').status=='INVALID' && registerForm.controls.billingAdress.controls.zip.hasError('required')">
+          zip code is required field
+        </div>
+ 
+        <div class="alert alert-danger" *ngIf="registerForm.get('billingAdress').get('zip').status=='INVALID' && registerForm.controls.billingAdress.controls.zip.hasError('pattern')">
+          zip code should match with the pattern
+        </div>
      
 
 
@@ -38,9 +54,12 @@
 
 
     <div>
-      <button class="btn btn-primary" (click)="register()" >Register</button>
+      <button class="btn btn-primary" (click)="register()" [disabled]="!registerForm.valid" >Register</button>
        </div>
       
+       <div>
+         {{saveMessage}}
+       </div>
    
     </form>
    </div>

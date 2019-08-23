@@ -5,6 +5,7 @@ import { TilesComponent } from './tiles/tiles.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { TileDetailComponent } from './tiles/tile-detail/tile-detail.component';
 import { RegisterComponent } from './users/register/register.component';
+import { AuthenticationGuard } from './services/authentication.guard';
 
 
 const routes: Routes = [
@@ -12,17 +13,17 @@ const routes: Routes = [
     path:'login',component:LoginComponent
   },
   {
-    path:'tiles',component:TilesComponent
+    path:'tiles',canActivate:[AuthenticationGuard] ,  component:TilesComponent
   },
  
   {
     path:"register", component:RegisterComponent
   },
    {
-    path:"tiles/:Id", component:TileDetailComponent
+    path:"tiles/:Id", canActivate:[AuthenticationGuard] ,component:TileDetailComponent
   },
   {
-    path:'welcome',component:WelcomeComponent
+    path:'welcome', canActivate:[AuthenticationGuard] ,component:WelcomeComponent
   },
   {
     path:'',redirectTo:'register',pathMatch:'prefix'

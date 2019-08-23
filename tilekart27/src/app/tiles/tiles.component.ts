@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITile } from '../interfaces/itile';
 import { TilesService } from '../services/tiles.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,11 +20,13 @@ export class TilesComponent implements OnInit {
   tiles:Array<ITile> =[]
     
  
-  constructor(private tilesService:TilesService) { 
+  constructor(private tilesService:TilesService, private routerService:Router) { 
     this.filteredTiles = this.tiles;
   }
 
   ngOnInit(): void {
+
+
     this.tilesService.getTiles().subscribe(
       (tiles)=>{
         this.tiles = tiles;

@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     }
     else
     {
+      sessionStorage.setItem('user',this.userName);
       this.router.navigate(['/tiles']);
     }
   }
