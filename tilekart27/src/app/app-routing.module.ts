@@ -13,15 +13,13 @@ const routes: Routes = [
     path:'login',component:LoginComponent
   },
   {
-    path:'tiles',canActivate:[AuthenticationGuard] ,  component:TilesComponent
+    path:'tiles', loadChildren:'./tiles/tiles/tiles.module#TilesModule'
   },
  
   {
     path:"register", component:RegisterComponent
   },
-   {
-    path:"tiles/:Id", canActivate:[AuthenticationGuard] ,component:TileDetailComponent
-  },
+  
   {
     path:'welcome', canActivate:[AuthenticationGuard] ,component:WelcomeComponent
   },
