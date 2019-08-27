@@ -28,9 +28,8 @@ tilekart27/dist/tilekart27/assets/images/tile7.jpg
 tilekart27/dist/tilekart27/assets/images/tile8.jpg
 tilekart27/dist/tilekart27/assets/images/tile9.jpg
 tilekart27/dist/tilekart27/assets/images/tile10.jpg
-tilekart27/src/app/app.module.ts
 tilekart27/e2e/protractor.conf.js
 tilekart27/e2e/tsconfig.json
 tilekart27/e2e/src/app.e2e-spec.ts
 tilekart27/e2e/src/app.po.ts
-tilekart27/src/app/app-routing.module.ts
+
