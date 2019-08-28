@@ -5,6 +5,8 @@ import { UsersRoutingModule } from './users-routing.module';
 import { RegisterComponent } from '../register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from '../login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -14,7 +16,9 @@ import { LoginComponent } from '../login/login.component';
     CommonModule,
     UsersRoutingModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+    HttpClientModule
+  ],
+  
 })
 export class UsersModule { }

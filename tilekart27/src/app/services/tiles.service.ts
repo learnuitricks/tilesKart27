@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+  
+)
 export class TilesService {
 
   private tilesURL:string = 'http://demo5911200.mockable.io/tiles'; 

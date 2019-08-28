@@ -9,20 +9,17 @@ import { AppComponent } from './app.component';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 
-import { MaxValueDirective } from './shared/custom_directives/max-value.directive';
 import { UsersModule } from './users/users/users.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
-    MaxValueDirective
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     UsersModule,
-    AppRoutingModule,
-    HttpClientModule,
+    AppRoutingModule
     
   ],
   providers: [],

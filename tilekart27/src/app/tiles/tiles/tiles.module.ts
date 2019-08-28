@@ -8,6 +8,9 @@ import { TileDetailComponent } from '../tile-detail/tile-detail.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { TilesService } from 'src/app/services/tiles.service';
+
+
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
     TilesRoutingModule,
     FormsModule,
     HttpClientModule,
-    SharedModule
-  ]
+    SharedModule,
+    HttpClientModule
+  ],
+  providers:[TilesService]
 })
 export class TilesModule { }

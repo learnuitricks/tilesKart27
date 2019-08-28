@@ -3,9 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  Observable } from 'rxjs';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
   userAPIURL : string = "http://demo5911200.mockable.io/user";
   constructor(private httpClient: HttpClient) { }
