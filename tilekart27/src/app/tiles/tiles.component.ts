@@ -40,20 +40,11 @@ export class TilesComponent implements OnInit {
   filter(){
     console.log(this.selectedFilter);
     console.log(this.filterText);
-    this.filteredTiles = this.performFilter(this.filterText, this.selectedFilter,this.tiles);
+    this.filteredTiles = this.tilesService.performFilter(this.filterText, this.selectedFilter,this.tiles);
     console.log(this.filteredTiles);
-
   }
 
-  performFilter(filterText: string,filterOption: string,arrayToFilter: ITile[]){
-       let filteredTiles = arrayToFilter.filter((tile)=>{
-        if(filterOption == "price"){
-          return tile.price > +filterText;
-        }
-       })
 
-       return filteredTiles;
-  }
 
 
 }

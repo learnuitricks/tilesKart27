@@ -20,4 +20,14 @@ export class TilesService {
   getTileDetails(tileId:number):Observable<ITile>{
     return this.httpClient.get<ITile>(this.tilesURL+`/${tileId}`);
   }
+
+  performFilter(filterText: string,filterOption: string,arrayToFilter: ITile[]){
+    let filteredTiles = arrayToFilter.filter((tile)=>{
+     if(filterOption == "price"){
+       return tile.price > +filterText;
+     }
+    })
+
+    return filteredTiles;
+}
 }
