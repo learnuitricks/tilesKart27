@@ -1,9 +1,9 @@
-import { TestBed } from '@angular/core/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { TestBed, inject } from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 import { TilesService } from './tiles.service';
 
-fdescribe('TilesService', () => {
+describe('TilesService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports:[HttpClientTestingModule],
     providers:[TilesService]
@@ -127,5 +127,26 @@ fdescribe('TilesService', () => {
  
     // first i want to call the perfom filter 
   })
+
+  it('it should get tiles when asked',inject([HttpTestingController,TilesService],(httpMock:HttpTestingController,tileServie:TilesService)=>{
+
+    const tileData =[{"name":"somany","model":"nit-01","price":200,"rating":2,"image":"tile1.jpg","status":1,"Id":1},
+    {"name":"johnson","model":"nit-02","price":100,"rating":4,"image":"tile2.jpg","status":0,"Id":2},
+    {"name":"johnson1","model":"nit-02","price":100,"rating":4,"image":"tile2.jpg","status":0,"Id":2}];
+ 
+    tileServie.getTiles().subscribe((tiles)=>{
+      expect(tiles.length).toBe(3);
+    })
+
+    const req = httpMock.expectOne("http://demo5911200.mockable.io/tiles");
+    expect(req.request.method).toBe('GET');
+
+    req.flush(tileData);
+
+    httpMock.verify();
+
+    // we want to mock the httpCLient
+
+  }));
 });
 
